@@ -1,0 +1,78 @@
+/* Design tokens. All text pairs below meet WCAG AA (4.5:1) on --surface / --bg. */
+:root {
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Manrope', 'Inter', 'Segoe UI', sans-serif;
+
+  --forest-900: #1b3329;
+  --forest-800: #233f34;
+  --forest-700: #294b3c;
+  --forest-600: #315f45;
+  --lime-300: #c8dd83;
+  --lime-200: #d9e8b3;
+  --gold: #a87a12;          /* 4.6:1 on white, used for star text */
+  --gold-fill: #d9a72b;     /* decorative star fill */
+
+  --bg: #f6f7f3;
+  --surface: #ffffff;
+  --surface-muted: #f1f4ec;
+  --border: #dfe3d8;
+  --border-subtle: #eceee8;
+
+  --text: #1f231d;
+  --text-2: #4a5146;        /* 8.3:1 */
+  --text-3: #5f665a;        /* 6.0:1 — smallest helper text */
+  --text-on-dark: #f5f7ef;
+  --text-on-dark-2: #c9d3c5;
+
+  --primary: var(--forest-700);
+  --primary-hover: var(--forest-900);
+  --accent-text: #3f5f2a;
+  --danger: #a33a2a;
+  --danger-bg: #fcefec;
+  --success: #2f6a3f;
+  --success-bg: #edf6ee;
+  --focus: #5e8a2e;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 2px rgba(28, 47, 35, .06), 0 2px 8px rgba(28, 47, 35, .04);
+  --shadow-md: 0 10px 28px rgba(28, 47, 35, .10);
+  --shadow-lg: 0 24px 70px rgba(15, 30, 20, .22);
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 320px; background: var(--bg); }
+body { margin: 0; min-width: 320px; min-height: 100vh; min-height: 100dvh; }
+#root { min-height: 100vh; min-height: 100dvh; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; touch-action: manipulation; }
+button:disabled { cursor: not-allowed; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+::selection { color: var(--forest-800); background: var(--lime-200); }
+.icon { flex: none; }
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

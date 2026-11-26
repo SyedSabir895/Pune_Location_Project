@@ -363,14 +363,15 @@ export default function AdminView({ token, notify }) {
                 <select value={store.ownerId} onChange={(e) => setStore((current) => ({ ...current, ownerId: e.target.value }))} required disabled={owners === null || !owners.length}>
                   <option value="">{owners === null ? 'Loading owners…' : owners.length ? 'Select a store owner' : 'No store owners yet'}</option>
                   {owners?.map((o) => (
-                    <option key={o.id} value={o.id}>
-                      {o.name} ({o.email}){o.store_count ? ` — already has ${o.store_count} store${o.store_count > 1 ? 's' : ''}` : ''}
+                    // Each owner can have only one store (stores.owner_id is UNIQUE), so owners with a store can't be picked.
+                    <option key={o.id} value={o.id} disabled={o.store_count > 0}>
+                      {o.name} ({o.email}){o.store_count ? ' — already has a store' : ''}
                     </option>
                   ))}
                 </select>
                 {owners && !owners.length
                   ? <small>No Store owner accounts exist. <button type="button" className="link-button inline" onClick={() => navigate('add-user')}>Create one in Add user</button> first.</small>
-                  : <small>Only accounts with the Store owner role are listed.</small>}
+                  : <small>Each store owner can have one store. Owners who already have one are greyed out.</small>}
               </label>
               <div className="form-action">
                 <button className="button primary" disabled={busy}><Icon name="plus" size={16} /> {busy ? 'Adding…' : 'Add store'}</button>
